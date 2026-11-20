@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: Manrope, system-ui, sans-serif; color: #E2E8F0; }
+::selection { background: rgba(139, 92, 246, .4); color: #fff; }
+
+.grid-bg {
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+.text-gradient-anim {
+  background: linear-gradient(90deg, #A78BFA, #60A5FA, #22D3EE, #34D399, #A78BFA);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+.glow-text { filter: drop-shadow(0 0 28px rgba(99,102,241,.45)); }
+.badge-sheen { background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.12) 50%, transparent 70%); background-size: 250% 100%; animation: shimmer 3.5s linear infinite; }
+@keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 200% 50%; } }
+
+.stream { animation: streamY linear infinite; }
+@keyframes streamY { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+.globe-spin { animation: globe 14s linear infinite; transform-origin: center; }
+@keyframes globe { from { transform: scaleX(1); } 50% { transform: scaleX(-1); } to { transform: scaleX(1); } }
+
+.range-q { -webkit-appearance: none; appearance: none; height: 8px; border-radius: 999px; background: linear-gradient(90deg, #7C3AED, #06B6D4 var(--p), #E2E8F0 var(--p)); outline: none; }
+.range-q::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 6px solid #7C3AED; box-shadow: 0 4px 14px rgba(124,58,237,.45); cursor: grab; transition: transform .15s; }
+.range-q::-webkit-slider-thumb:hover { transform: scale(1.12); }
+.range-q::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 6px solid #7C3AED; cursor: grab; }
+.range-q:focus-visible { box-shadow: 0 0 0 4px rgba(139,92,246,.3); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
