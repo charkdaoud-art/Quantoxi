@@ -36,8 +36,8 @@ export const stats = [
   { id: 'avg', label: 'Average Partner Payout', value: 2500, prefix: '$', note: 'Illustrative average payout', verified: false },
 ];
 
-/** Data acquisition rates in USD per eligible record. Configurable. */
-export const currency = 'USD';
+/** Data acquisition rates in CAD per eligible record. Configurable. */
+export const currency = 'CAD';
 export const dataRates = [
   // One standard rate: every eligible record includes name, email, phone number and address.
   { id: 'standard', label: 'Name, email, phone number and address', short: 'Standard record', desc: 'Authorized name, email, phone number and address', rate: 0.08 },
