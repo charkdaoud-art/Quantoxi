@@ -123,13 +123,12 @@ const TICKS = [[100, '100', 1], [500, '500', 0], [1000, '1K', 1], [2500, '2.5K',
 
 export function Calculator() {
   const [industry, setIndustry] = useState('cleaning');
-  const [cat, setCat] = useState('full');
   const [records, setRecords] = useState(25000);
   const [draft, setDraft] = useState('25000');
   const [err, setErr] = useState('');
   const [open, setOpen] = useState(false);
-  const rate = dataRates.find((r) => r.id === cat).rate;
-  const earnings = records * rate;
+  const topRate = Math.max(...dataRates.map((r) => r.rate));
+  const earnings = records * topRate;
   const ind = industries.find((i) => i.id === industry);
 
   const commit = (val) => {
@@ -158,18 +157,6 @@ export function Calculator() {
                 <ChevronDown size={18} className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               </div>
 
-              <fieldset className="mt-7">
-                <legend className="text-sm font-semibold text-slate-900">Data category</legend>
-                <div className="mt-2 grid gap-2">
-                  {dataRates.map((r) => (
-                    <label key={r.id} className={`flex cursor-pointer items-center justify-between gap-3 rounded-xl border px-4 py-3 text-sm transition focus-within:ring-4 focus-within:ring-violet-100 ${cat === r.id ? 'border-violet-500 bg-violet-50/70 text-slate-900' : 'border-slate-200 text-slate-600 hover:border-slate-300'}`}>
-                      <input type="radio" name="cat" value={r.id} checked={cat === r.id} onChange={() => setCat(r.id)} className="sr-only" />
-                      <span><span className="block font-medium">{r.label}</span><span className="block text-xs text-slate-500">{r.desc}</span></span>
-                      <span className="shrink-0 font-mono text-sm font-semibold text-violet-700">{fmtRate(r.rate)}</span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
 
               <div className="mt-7">
                 <div className="flex items-end justify-between gap-4">
@@ -214,6 +201,10 @@ export function Calculator() {
                   </div>
                 </div>
                 <p id="calc-err" className="mt-2 min-h-[1.25rem] text-sm text-rose-600" role="alert">{err}</p>
+                <div className="mt-6 flex gap-3 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-600 ring-1 ring-slate-200">
+                  <Info size={18} className="mt-0.5 shrink-0 text-violet-600" />
+                  <p>Your rate depends on what each record includes: name, email and phone, plus street address and client history for the higher tiers. The final amount is confirmed after verification.</p>
+                </div>
               </div>
             </div>
 
@@ -221,14 +212,21 @@ export function Calculator() {
               <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" />
               <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl" />
               <div className="relative">
-                <div className="flex items-center gap-2 text-sm text-slate-300"><CalcIcon size={16} className="text-emerald-300" /> Estimated earnings</div>
+                <div className="flex items-center gap-2 text-sm text-slate-300"><CalcIcon size={16} className="text-emerald-300" /> Estimated earnings, up to</div>
                 <div aria-live="polite" className="mt-3 font-display text-5xl font-semibold tracking-tight text-emerald-300 drop-shadow-[0_0_30px_rgba(16,185,129,.45)] sm:text-6xl">
                   <Money value={earnings} />
                 </div>
                 <div className="mt-2 font-mono text-xs text-slate-400">{currency} · estimate only · before verification</div>
                 <div className="mt-8 space-y-3 text-sm">
-                  {[['Industry', ind.name], ['Category', dataRates.find((r) => r.id === cat).short], ['Records', records.toLocaleString()], ['Rate per eligible record', fmtRate(rate)]].map(([k, v]) => (
+                  {[['Industry', ind.name], ['Records', records.toLocaleString()]].map(([k, v]) => (
                     <div key={k} className="flex justify-between border-b border-white/10 pb-3"><span className="text-slate-400">{k}</span><span className="font-medium">{v}</span></div>
+                  ))}
+                  <div className="pt-1 font-mono text-[11px] uppercase tracking-widest text-slate-500">By data provided</div>
+                  {dataRates.map((r) => (
+                    <div key={r.id} className="flex items-baseline justify-between gap-3 border-b border-white/10 pb-3">
+                      <span className="text-slate-300">{r.label} <span className="font-mono text-xs text-slate-500">{fmtRate(r.rate)}</span></span>
+                      <Money value={records * r.rate} className="font-semibold text-emerald-300" />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -272,7 +270,7 @@ export function Calculator() {
                       <td className="px-2 py-1 text-slate-600">{n.toLocaleString()}</td>
                       {dataRates.map((r) => (
                         <td key={r.id} className="p-0 text-right">
-                          <button onClick={() => { setCat(r.id); setRecords(n); setDraft(String(n)); setErr(''); }} aria-label={`${n.toLocaleString()} records at ${fmtRate(r.rate)}`} className={`w-full rounded-md px-2 py-1 text-right font-semibold hover:bg-violet-50 ${cat === r.id && records === n ? 'bg-emerald-50 text-emerald-700' : 'text-emerald-700/80'}`}>${(n * r.rate).toLocaleString('en-US', { maximumFractionDigits: 0 })}</button>
+                          <button onClick={() => { setRecords(n); setDraft(String(n)); setErr(''); }} aria-label={`${n.toLocaleString()} records at ${fmtRate(r.rate)}`} className={`w-full rounded-md px-2 py-1 text-right font-semibold hover:bg-violet-50 ${records === n ? 'bg-emerald-50 text-emerald-700' : 'text-emerald-700/80'}`}>${(n * r.rate).toLocaleString('en-US', { maximumFractionDigits: 0 })}</button>
                         </td>
                       ))}
                     </tr>
