@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
 import Nav from './components/Nav';
 import { Hero, Stats, Calculator, HowItWorks } from './components/SectionsA';
-import { Industries, Technology, CRM, Security, FAQ, FinalCTA, Footer } from './components/SectionsB';
+import { Industries, CRM, Security, FAQ, FinalCTA, Footer } from './components/SectionsB';
 import Onboarding from './pages/Onboarding';
 import Dashboard from './pages/Dashboard';
 import { LegalPage, Login } from './pages/Legal';
@@ -43,7 +43,7 @@ export default function App() {
   else if (['privacy', 'terms', 'agreement'].includes(route)) page = <LegalPage doc={route} />;
   else page = (
     <main>
-      <Hero /><Stats /><Calculator /><HowItWorks /><Industries /><Technology /><CRM /><Security /><FAQ /><FinalCTA />
+      <Hero /><Stats /><Calculator /><HowItWorks /><Industries /><CRM /><Security /><FAQ /><FinalCTA />
     </main>
   );
 

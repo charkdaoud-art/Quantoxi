@@ -5,7 +5,6 @@ import { Logo, go, scrollToId } from './ui';
 
 export const NAV = [
   { label: 'Home', id: 'top' },
-  { label: 'Our Technology', id: 'technology' },
   { label: 'Data Partnerships', id: 'calculator' },
   { label: 'Industries', id: 'industries' },
   { label: 'Security & Privacy', id: 'security' },
