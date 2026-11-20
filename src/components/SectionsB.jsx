@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Check, FileSpreadsheet, ArrowRight, Lock, Mail, Phone } from 'lucide-react';
+import { ChevronDown, Check, FileSpreadsheet, ArrowRight, Lock, Mail, Phone, MapPin } from 'lucide-react';
 import { ParticleField } from './DataSphere';
 import { Button, Glass, Icon, Logo, Reveal, SectionHeader, go, scrollToId } from './ui';
 import { company, crms, industries } from '../config/siteConfig';
@@ -250,13 +250,12 @@ export function FinalCTA() {
 export function Footer({ route }) {
   const sec = (id) => navigateToSection(id, route);
   const cols = [
-    ['Company', [['Data Partnerships', () => sec('calculator')], ['Industries', () => sec('industries')], ['FAQ', () => sec('faq')]]],
-    ['Partners', [['Contact Us', () => sec('contact')], ['Partner Login', () => go('login')], ['Demo Dashboard', () => go('dashboard')], ['Security & Privacy', () => sec('security')]]],
+    ['Company', [['Industries', () => sec('industries')], ['FAQ', () => sec('faq')]]],
     ['Legal', [['Privacy Policy', () => go('privacy')], ['Terms of Service', () => go('terms')], ['Data Partnership Agreement', () => go('agreement')]]],
   ];
   return (
     <footer className="border-t border-white/10 bg-midnight-950 pt-16 text-slate-400">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.3fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1.2fr_1.3fr]">
         <div>
           <div className="text-white"><Logo /></div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed">{company.slogan} A North American AI and data analytics company building predictive intelligence on responsibly sourced data.</p>
@@ -272,16 +271,15 @@ export function Footer({ route }) {
         <div>
           <div className="font-mono text-[11px] uppercase tracking-widest text-slate-500">Contact</div>
           <address className="mt-4 space-y-2 text-sm not-italic">
-            <div className="text-slate-300">{company.legalEntity}</div>
-            <div>{company.address}</div>
-            <div>{company.jurisdiction}</div>
+            <div className="font-medium text-slate-200">{company.name}</div>
+            <div className="flex items-center gap-1.5"><MapPin size={14} /> {company.city}</div>
             <a href={`mailto:${company.email}`} className="flex items-center gap-1.5 hover:text-white"><Mail size={14} /> {company.email}</a>
             <a href={`tel:${company.phoneHref}`} className="flex items-center gap-1.5 hover:text-white"><Phone size={14} /> {company.phone}</a>
           </address>
         </div>
       </div>
       <div className="mx-auto mt-14 flex max-w-7xl flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
-        <span>© {new Date().getFullYear()} {company.legalEntity}, operating as Quantoxi. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} {company.name}. All rights reserved.</span>
         <span className="flex items-center gap-1.5"><Lock size={12} /> Prototype build · no data leaves your browser</span>
       </div>
     </footer>

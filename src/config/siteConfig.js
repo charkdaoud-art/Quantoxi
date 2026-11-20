@@ -13,9 +13,10 @@
 export const company = {
   name: 'Quantoxi',
   // TODO(legal): replace with the actual operating entity before launch.
-  legalEntity: '[Legal entity name to be confirmed]',
-  jurisdiction: '[Jurisdiction of incorporation to be confirmed]',
-  address: '[Registered business address to be confirmed]',
+  legalEntity: 'Quantoxi',
+  jurisdiction: 'Ontario, Canada',
+  address: 'Toronto, Ontario, Canada',
+  city: 'Toronto, Ontario',
   email: 'hello@quantoxi.com',
   privacyEmail: 'hello@quantoxi.com',
   privacyOfficer: '[Privacy Officer name to be confirmed]',

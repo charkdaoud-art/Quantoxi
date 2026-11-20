@@ -16,7 +16,7 @@ npm run build    # production build (single self-contained dist/index.html)
 
 All business figures live in `src/config/siteConfig.js`:
 
-- `company` – legal entity, jurisdiction, address (placeholders to fill before launch), email and phone
+- `company` – business name, location (Toronto, Ontario), email and phone
 - `statsMode` – `'demo'` shows illustrative targets with a label; `'production'` shows only stats marked `verified: true`
 - `dataRates` – per-record rates (currently 8¢ / 13¢ / 17¢)
 - `industries`, `crms`, `timelines`
