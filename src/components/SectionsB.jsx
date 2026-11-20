@@ -280,7 +280,7 @@ export function Footer({ route }) {
       </div>
       <div className="mx-auto mt-14 flex max-w-7xl flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
         <span>© {new Date().getFullYear()} {company.name}. All rights reserved.</span>
-        <span className="flex items-center gap-1.5"><Lock size={12} /> Prototype build · no data leaves your browser</span>
+        <span className="flex items-center gap-1.5"><MapPin size={12} /> {company.city}</span>
       </div>
     </footer>
   );

@@ -19,7 +19,6 @@ export const company = {
   city: 'Toronto, Ontario',
   email: 'hello@quantoxi.com',
   privacyEmail: 'hello@quantoxi.com',
-  privacyOfficer: '[Privacy Officer name to be confirmed]',
   phone: '(647) 313-0731',
   phoneHref: '+16473130731',
   founded: 2026,

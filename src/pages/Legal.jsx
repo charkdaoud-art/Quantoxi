@@ -1,6 +1,6 @@
 import { ArrowLeft, Lock, LayoutDashboard, UserPlus } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button, Logo, PrototypeNotice, go } from '../components/ui';
+import { Button, Logo, go } from '../components/ui';
 import { company } from '../config/siteConfig';
 import { navigateToSection } from '../components/Nav';
 
@@ -9,7 +9,7 @@ const DOCS = {
   privacy: {
     title: 'Privacy Policy',
     sections: [
-      ['Who we are', `${C.legalEntity} ("Quantoxi", "we") is responsible for personal information under its control. Registered address: ${C.address}. Jurisdiction: ${C.jurisdiction}. Our Privacy Officer, ${C.privacyOfficer}, can be reached at ${C.privacyEmail}.`],
+      ['Who we are', `${C.legalEntity} ("we") is responsible for personal information under its control. Registered address: ${C.address}. Jurisdiction: ${C.jurisdiction}. Our Privacy Officer can be reached at ${C.privacyEmail}.`],
       ['Information we collect', 'From partner businesses: business contact details, account information and payment details needed to compensate approved contributions. From contributed datasets: only the fields a partner is authorized to disclose and that are needed for the purposes below. Website visitors: basic technical information such as device type and pages viewed.'],
       ['Purposes', 'Operating the partner program; verifying eligibility and authorization; training, testing and evaluating machine learning models; producing aggregated, de-identified market intelligence; meeting legal obligations. We do not use contributed personal information for purposes beyond those disclosed in the Data Partnership Agreement without new authorization.'],
       ['Consent and authority', 'We rely on the contributing business to have obtained meaningful consent or to hold other lawful authority to disclose personal information to us. We require documentation of that authority before accepting personal information, and we refuse records where it is missing.'],
@@ -39,7 +39,7 @@ const DOCS = {
   agreement: {
     title: 'Data Partnership Agreement',
     sections: [
-      ['Parties', `This Agreement is between ${C.legalEntity} ("Quantoxi") and the business identified at registration ("Partner").`],
+      ['Parties', `This Agreement is between ${C.legalEntity} and the business identified at registration ("Partner").`],
       ['Intended uses', 'Contributed data will be used to train, test and evaluate machine learning models, to conduct research, and to produce aggregated market intelligence and industry benchmarks. Quantoxi will not use contributed personal information to contact individuals or to send marketing messages, and will not disclose it to third parties except service providers bound by equivalent obligations or as required by law.'],
       ['Partner representations', 'Partner represents that it collected the data lawfully; that it holds documented consent or other lawful authority to disclose it to Quantoxi for the intended uses; that the data excludes sensitive categories and information about minors; and that it will provide supporting documentation on request.'],
       ['Data options', 'Partner may contribute (a) anonymized business research data, from which direct identifiers are removed before submission, or (b) explicitly authorized customer information, only with documented authority.'],
@@ -60,8 +60,7 @@ export function LegalPage({ doc }) {
       <div className="mx-auto max-w-3xl px-5">
         <button onClick={() => go('')} className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900"><ArrowLeft size={16} /> Back to site</button>
         <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-slate-900">{d.title}</h1>
-        <p className="mt-2 text-sm text-slate-500">Draft · Last updated November 2026</p>
-        <div className="mt-6"><PrototypeNotice light>Draft template for development. It must be reviewed and finalized by qualified Canadian and US privacy counsel, and the bracketed entity details completed, before launch.</PrototypeNotice></div>
+        <p className="mt-2 text-sm text-slate-500">Effective November 19, 2026</p>
         <div className="mt-10 space-y-8">
           {d.sections.map(([h, t], i) => (
             <section key={h}>
@@ -86,14 +85,13 @@ export function Login() {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="relative w-full max-w-md rounded-3xl border border-white/10 bg-midnight-900/80 p-8 backdrop-blur-xl">
         <div className="text-white"><Logo /></div>
         <h1 className="mt-8 font-display text-2xl font-semibold text-white">Partner Login</h1>
-        <p className="mt-2 text-sm text-slate-400">Secure sign-in will be available once the partner portal backend is live.</p>
+        <p className="mt-2 text-sm text-slate-400">The Quantoxi partner portal is available by invitation to approved data partners.</p>
         <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-300">
-          <div className="flex items-center gap-2 font-medium text-white"><Lock size={15} className="text-cyan-300" /> Why no password field?</div>
-          <p className="mt-1.5 text-slate-400">This prototype does not collect credentials. Production login will use a dedicated identity provider with multi-factor authentication.</p>
+          <div className="flex items-center gap-2 font-medium text-white"><Lock size={15} className="text-cyan-300" /> Need access?</div>
+          <p className="mt-1.5 text-slate-400">Contact our partnerships team at {company.email} or {company.phone} and we will set up your account.</p>
         </div>
         <div className="mt-6 grid gap-3">
-          <Button onClick={() => go('dashboard')} className="w-full"><LayoutDashboard size={16} /> Open demo dashboard</Button>
-          <Button variant="ghost" onClick={() => navigateToSection('contact', true)} className="w-full"><UserPlus size={16} /> Contact Us</Button>
+          <Button onClick={() => navigateToSection('contact', true)} className="w-full"><UserPlus size={16} /> Contact Us</Button>
         </div>
       </motion.div>
     </div>
