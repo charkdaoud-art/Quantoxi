@@ -18,7 +18,7 @@ All business figures live in `src/config/siteConfig.js`:
 
 - `company` – business name, location (Toronto, Ontario), email and phone
 - `statsMode` – `'demo'` shows illustrative targets with a label; `'production'` shows only stats marked `verified: true`
-- `dataRates` – per-record rates (currently 8¢ / 13¢ / 17¢)
+- `dataRates` – the standard per-record rate (8¢ for name, email, phone and address)
 - `industries`, `crms`, `timelines`
 
 ## Routes (hash-based)

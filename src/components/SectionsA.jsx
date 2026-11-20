@@ -127,8 +127,8 @@ export function Calculator() {
   const [draft, setDraft] = useState('25000');
   const [err, setErr] = useState('');
   const [open, setOpen] = useState(false);
-  const topRate = Math.max(...dataRates.map((r) => r.rate));
-  const earnings = records * topRate;
+  const std = dataRates[0];
+  const earnings = records * std.rate;
   const ind = industries.find((i) => i.id === industry);
 
   const commit = (val) => {
@@ -203,7 +203,7 @@ export function Calculator() {
                 <p id="calc-err" className="mt-2 min-h-[1.25rem] text-sm text-rose-600" role="alert">{err}</p>
                 <div className="mt-6 flex gap-3 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-600 ring-1 ring-slate-200">
                   <Info size={18} className="mt-0.5 shrink-0 text-violet-600" />
-                  <p>Your rate depends on what each record includes: name, email and phone, plus street address and client history for the higher tiers. The final amount is confirmed after verification.</p>
+                  <p>One standard rate of {fmtRate(std.rate)} per record. Each record includes the customer's name, email, phone number and address. The final amount is confirmed after verification.</p>
                 </div>
               </div>
             </div>
@@ -212,21 +212,14 @@ export function Calculator() {
               <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" />
               <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl" />
               <div className="relative">
-                <div className="flex items-center gap-2 text-sm text-slate-300"><CalcIcon size={16} className="text-emerald-300" /> Estimated earnings, up to</div>
+                <div className="flex items-center gap-2 text-sm text-slate-300"><CalcIcon size={16} className="text-emerald-300" /> Estimated earnings</div>
                 <div aria-live="polite" className="mt-3 font-display text-5xl font-semibold tracking-tight text-emerald-300 drop-shadow-[0_0_30px_rgba(16,185,129,.45)] sm:text-6xl">
                   <Money value={earnings} />
                 </div>
                 <div className="mt-2 font-mono text-xs text-slate-400">{currency} · estimate only · before verification</div>
                 <div className="mt-8 space-y-3 text-sm">
-                  {[['Industry', ind.name], ['Records', records.toLocaleString()]].map(([k, v]) => (
-                    <div key={k} className="flex justify-between border-b border-white/10 pb-3"><span className="text-slate-400">{k}</span><span className="font-medium">{v}</span></div>
-                  ))}
-                  <div className="pt-1 font-mono text-[11px] uppercase tracking-widest text-slate-500">By data provided</div>
-                  {dataRates.map((r) => (
-                    <div key={r.id} className="flex items-baseline justify-between gap-3 border-b border-white/10 pb-3">
-                      <span className="text-slate-300">{r.label} <span className="font-mono text-xs text-slate-500">{fmtRate(r.rate)}</span></span>
-                      <Money value={records * r.rate} className="font-semibold text-emerald-300" />
-                    </div>
+                  {[['Industry', ind.name], ['Records', records.toLocaleString()], ['Each record includes', 'Name, email, phone, address'], ['Rate per record', fmtRate(std.rate)]].map(([k, v]) => (
+                    <div key={k} className="flex justify-between gap-4 border-b border-white/10 pb-3"><span className="text-slate-400">{k}</span><span className="text-right font-medium">{v}</span></div>
                   ))}
                 </div>
               </div>
@@ -261,9 +254,9 @@ export function Calculator() {
           </Reveal>
           <Reveal delay={0.05}>
             <div className="rounded-2xl bg-white p-5 ring-1 ring-slate-200">
-              <div className="mb-3 text-sm font-semibold text-slate-900">Example estimates by category</div>
+              <div className="mb-3 text-sm font-semibold text-slate-900">Example estimates at {fmtRate(std.rate)} per record</div>
               <table className="w-full font-mono text-[13px]">
-                <thead><tr className="text-left text-[11px] text-slate-400"><th className="px-2 pb-1.5 font-medium">Records</th>{dataRates.map((r) => <th key={r.id} className="px-2 pb-1.5 text-right font-medium">{fmtRate(r.rate)}</th>)}</tr></thead>
+                <thead><tr className="text-left text-[11px] text-slate-400"><th className="px-2 pb-1.5 font-medium">Records</th><th className="px-2 pb-1.5 text-right font-medium">You earn</th></tr></thead>
                 <tbody>
                   {examples.map((n) => (
                     <tr key={n} className="border-t border-slate-100">

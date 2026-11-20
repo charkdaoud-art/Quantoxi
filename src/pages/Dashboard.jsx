@@ -8,7 +8,7 @@ import { navigateToSection } from '../components/Nav';
 /* All figures below are synthetic sample data for the demo account. */
 const MONTHS = ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
 const CONTRIB = [0, 1200, 2400, 1800, 3600, 4200, 2900, 5100, 4400, 6200, 5300, 3100];
-const COMP = CONTRIB.map((c, i) => Math.round(c * (i % 3 === 0 ? 0.13 : i % 3 === 1 ? 0.17 : 0.08) * 100) / 100);
+const COMP = CONTRIB.map((c, i) => Math.round(c * 0.08 * 100) / 100);
 
 const STATUS = {
   Draft: 'bg-slate-500/15 text-slate-300 ring-slate-400/30',
@@ -23,14 +23,14 @@ const STATUS = {
 const PIPE = ['Draft', 'Submitted', 'Authorization Review', 'Under Verification', 'Approved', 'Payment Processing', 'Paid'];
 
 const SUBS = [
-  { id: 'QV-1048', file: 'clients_nov.csv', date: '2026-11-12', records: 3100, approved: 0, status: 'Authorization Review', cat: 'Name + email + phone' },
-  { id: 'QV-1041', file: 'clients_oct.csv', date: '2026-10-09', records: 5300, approved: 5012, status: 'Payment Processing', cat: 'Full client profile' },
-  { id: 'QV-1036', file: 'jobber_export_sep.csv', date: '2026-09-08', records: 6200, approved: 5890, status: 'Paid', cat: 'Full client profile' },
-  { id: 'QV-1029', file: 'aug_contacts.csv', date: '2026-08-11', records: 4400, approved: 4105, status: 'Paid', cat: 'Contact + address' },
-  { id: 'QV-1027', file: 'leads_unverified.csv', date: '2026-07-30', records: 1800, approved: 0, status: 'Rejected', cat: 'Name + email + phone', reason: 'No documented consent for disclosure' },
-  { id: 'QV-1022', file: 'jul_clients.csv', date: '2026-07-07', records: 5100, approved: 4870, status: 'Paid', cat: 'Full client profile' },
-  { id: 'QV-1050', file: 'draft_dec.csv', date: '2026-11-17', records: 850, approved: 0, status: 'Draft', cat: 'Name + email + phone' },
-  { id: 'QV-1049', file: 'commercial_accts.csv', date: '2026-11-15', records: 1200, approved: 0, status: 'Under Verification', cat: 'Name + email + phone' },
+  { id: 'QV-1048', file: 'clients_nov.csv', date: '2026-11-12', records: 3100, approved: 0, status: 'Authorization Review', cat: 'Standard record' },
+  { id: 'QV-1041', file: 'clients_oct.csv', date: '2026-10-09', records: 5300, approved: 5012, status: 'Payment Processing', cat: 'Standard record' },
+  { id: 'QV-1036', file: 'jobber_export_sep.csv', date: '2026-09-08', records: 6200, approved: 5890, status: 'Paid', cat: 'Standard record' },
+  { id: 'QV-1029', file: 'aug_contacts.csv', date: '2026-08-11', records: 4400, approved: 4105, status: 'Paid', cat: 'Standard record' },
+  { id: 'QV-1027', file: 'leads_unverified.csv', date: '2026-07-30', records: 1800, approved: 0, status: 'Rejected', cat: 'Standard record', reason: 'No documented consent for disclosure' },
+  { id: 'QV-1022', file: 'jul_clients.csv', date: '2026-07-07', records: 5100, approved: 4870, status: 'Paid', cat: 'Standard record' },
+  { id: 'QV-1050', file: 'draft_dec.csv', date: '2026-11-17', records: 850, approved: 0, status: 'Draft', cat: 'Standard record' },
+  { id: 'QV-1049', file: 'commercial_accts.csv', date: '2026-11-15', records: 1200, approved: 0, status: 'Under Verification', cat: 'Standard record' },
 ];
 const PAYMENTS = [
   { id: 'PMT-3307', date: '2026-10-14', amount: 589.0, method: 'EFT', ref: 'QV-1036', status: 'Paid' },

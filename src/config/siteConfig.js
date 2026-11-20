@@ -39,10 +39,8 @@ export const stats = [
 /** Data acquisition rates in USD per eligible record. Configurable. */
 export const currency = 'USD';
 export const dataRates = [
-  // Cumulative pricing: base contact record, +5¢ for address, +4¢ more for full client history.
-  { id: 'contact', label: 'Name, email and phone number', short: 'Name + email + phone', desc: 'Base record: authorized name, email and phone', rate: 0.08 },
-  { id: 'address', label: 'Contact + address', short: 'Contact + address', desc: 'Base record plus street address (+5¢)', rate: 0.13 },
-  { id: 'full', label: 'Full client profile', short: 'Full client profile', desc: 'Contact, address and full client history (+4¢)', rate: 0.17 },
+  // One standard rate: every eligible record includes name, email, phone number and address.
+  { id: 'standard', label: 'Name, email, phone number and address', short: 'Standard record', desc: 'Authorized name, email, phone number and address', rate: 0.08 },
 ];
 
 /** Formats a per-record rate in cents, e.g. 0.08 → "8¢", 0.075 → "7.5¢". */
