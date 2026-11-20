@@ -3,14 +3,13 @@ import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
 import Nav from './components/Nav';
 import { Hero, Stats, Calculator, HowItWorks } from './components/SectionsA';
 import { Industries, CRM, Security, FAQ, FinalCTA, Footer } from './components/SectionsB';
-import Onboarding from './pages/Onboarding';
 import Dashboard from './pages/Dashboard';
 import { LegalPage, Login } from './pages/Legal';
 import { Logo } from './components/ui';
 
-/* Hash routes: '' (home), onboarding, dashboard, login, privacy, terms, agreement */
-const ROUTES = ['onboarding', 'dashboard', 'login', 'privacy', 'terms', 'agreement'];
-const TITLES = { '': 'Quantoxi | Your Data. Tomorrow’s Intelligence.', onboarding: 'Become a Data Partner | Quantoxi', dashboard: 'Partner Dashboard (Demo) | Quantoxi', login: 'Partner Login | Quantoxi', privacy: 'Privacy Policy | Quantoxi', terms: 'Terms of Service | Quantoxi', agreement: 'Data Partnership Agreement | Quantoxi' };
+/* Hash routes: '' (home), dashboard, login, privacy, terms, agreement */
+const ROUTES = ['dashboard', 'login', 'privacy', 'terms', 'agreement'];
+const TITLES = { '': 'Quantoxi | Your Data. Tomorrow’s Intelligence.', dashboard: 'Partner Dashboard (Demo) | Quantoxi', login: 'Partner Login | Quantoxi', privacy: 'Privacy Policy | Quantoxi', terms: 'Terms of Service | Quantoxi', agreement: 'Data Partnership Agreement | Quantoxi' };
 const readRoute = () => { const h = window.location.hash.replace('#', ''); return ROUTES.includes(h) ? h : ''; };
 
 function Loader() {
@@ -37,8 +36,7 @@ export default function App() {
   useEffect(() => { document.title = TITLES[route]; }, [route]);
 
   let page;
-  if (route === 'onboarding') page = <Onboarding />;
-  else if (route === 'dashboard') page = <Dashboard />;
+  if (route === 'dashboard') page = <Dashboard />;
   else if (route === 'login') page = <Login />;
   else if (['privacy', 'terms', 'agreement'].includes(route)) page = <LegalPage doc={route} />;
   else page = (

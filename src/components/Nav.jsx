@@ -76,8 +76,8 @@ export default function Nav({ route }) {
           <button onClick={() => go('login')} className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium text-slate-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
             <LogIn size={15} /> Partner Login
           </button>
-          <button onClick={() => go('onboarding')} className="rounded-full bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-500 px-4 py-2 text-[13px] font-semibold text-white shadow-[0_6px_24px_-6px_rgba(99,102,241,.8)] transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
-            Become a Partner
+          <button onClick={() => click('contact')} className="rounded-full bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-500 px-4 py-2 text-[13px] font-semibold text-white shadow-[0_6px_24px_-6px_rgba(99,102,241,.8)] transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+            Contact Us
           </button>
         </div>
 
@@ -97,7 +97,7 @@ export default function Nav({ route }) {
             ))}
             <div className="mt-2 grid grid-cols-2 gap-2 border-t border-white/10 pt-3">
               <button onClick={() => { setOpen(false); go('login'); }} className="rounded-xl bg-white/5 px-4 py-3 text-sm font-medium text-white">Partner Login</button>
-              <button onClick={() => { setOpen(false); go('onboarding'); }} className="rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 px-4 py-3 text-sm font-semibold text-white">Become a Partner</button>
+              <button onClick={() => click('contact')} className="rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 px-4 py-3 text-sm font-semibold text-white">Contact Us</button>
             </div>
           </motion.div>
         )}

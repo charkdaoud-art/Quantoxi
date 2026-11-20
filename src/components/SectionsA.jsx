@@ -49,7 +49,7 @@ export function Hero() {
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.38 }} className="mt-9 flex flex-wrap gap-3">
             <Button onClick={() => scrollToId('calculator')} icon="Calculator">Calculate Your Earnings</Button>
-            <Button variant="ghost" onClick={() => go('onboarding')} icon="ArrowRight">Become a Data Partner</Button>
+            <Button variant="ghost" onClick={() => scrollToId('contact')} icon="ArrowRight">Contact Us</Button>
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-400">
             {['Documented authorization required', 'CSV from your existing software', 'Canada and United States'].map((t) => (
@@ -230,7 +230,7 @@ export function Calculator() {
                   ))}
                 </div>
               </div>
-              <Button variant="green" className="relative mt-10 w-full py-4 text-base" onClick={() => go('onboarding')}>Get Started — Become a Data Partner <ArrowRight size={18} /></Button>
+              <Button variant="green" className="relative mt-10 w-full py-4 text-base" onClick={() => scrollToId('contact')}>Contact Us to Get Started <ArrowRight size={18} /></Button>
             </div>
           </div>
         </Reveal>
@@ -287,7 +287,7 @@ export function Calculator() {
 
 /* ------------------------------- HOW IT WORKS ----------------------------- */
 const STEPS = [
-  { n: '01', t: 'Register', d: 'Create your business partner account in minutes.', I: UserPlus, c: '#8B5CF6' },
+  { n: '01', t: 'Get in Touch', d: 'Call or email us and we will walk you through the partnership.', I: UserPlus, c: '#8B5CF6' },
   { n: '02', t: 'Prepare Your Data', d: 'Export eligible, authorized records from your existing CRM or business management software.', I: FileSpreadsheet, c: '#3B82F6' },
   { n: '03', t: 'Verification', d: 'Our data validation system reviews eligibility, permissions, formatting, quality and duplicate records.', I: ShieldCheck, c: '#22D3EE' },
   { n: '04', t: 'Get Paid', d: 'Receive compensation for approved data contributions following verification.', I: Wallet, c: '#10B981' },

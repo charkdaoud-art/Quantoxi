@@ -2,6 +2,7 @@ import { ArrowLeft, Lock, LayoutDashboard, UserPlus } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button, Logo, PrototypeNotice, go } from '../components/ui';
 import { company } from '../config/siteConfig';
+import { navigateToSection } from '../components/Nav';
 
 const C = company;
 const DOCS = {
@@ -92,7 +93,7 @@ export function Login() {
         </div>
         <div className="mt-6 grid gap-3">
           <Button onClick={() => go('dashboard')} className="w-full"><LayoutDashboard size={16} /> Open demo dashboard</Button>
-          <Button variant="ghost" onClick={() => go('onboarding')} className="w-full"><UserPlus size={16} /> Become a Partner</Button>
+          <Button variant="ghost" onClick={() => navigateToSection('contact', true)} className="w-full"><UserPlus size={16} /> Contact Us</Button>
         </div>
       </motion.div>
     </div>

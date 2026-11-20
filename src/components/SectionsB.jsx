@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Check, FileSpreadsheet, ArrowRight, Lock, Mail } from 'lucide-react';
+import { ChevronDown, Check, FileSpreadsheet, ArrowRight, Lock, Mail, Phone } from 'lucide-react';
 import { ParticleField } from './DataSphere';
 import { Button, Glass, Icon, Logo, Reveal, SectionHeader, go, scrollToId } from './ui';
 import { company, crms, industries } from '../config/siteConfig';
@@ -45,7 +45,7 @@ export function CRM() {
     <section id="crm" className="relative scroll-mt-20 bg-[#F7F8FC] py-24 sm:py-32">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[1fr_1.1fr]">
         <div>
-          <SectionHeader center={false} light eyebrow="CRM compatibility" title="Your Existing Software. A Simpler Process." sub="If your system can export a CSV file, you can participate. Export eligible records, map the columns, and our validator handles the rest." />
+          <SectionHeader center={false} light eyebrow="CRM compatibility" title="Your Existing Software. A Simpler Process." sub="If your system can export a CSV file, you can participate. Export eligible records and we will guide you through the rest." />
           <Reveal delay={0.15}>
             <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {crms.map((c) => (
@@ -93,7 +93,7 @@ export function CRM() {
 
 /* --------------------------------- SECURITY ------------------------------- */
 const SEC = [
-  ['Data minimization', 'We request only the fields needed for an approved purpose. Unneeded columns can be stripped in your browser before submission.', 'Filter'],
+  ['Data minimization', 'We request only the fields needed for an approved purpose, and nothing more.', 'Filter'],
   ['Encryption in transit and at rest', 'Production systems are designed to use TLS in transit and encrypted storage at rest.', 'Lock'],
   ['Secure data processing', 'Processing will run in isolated environments with logging and least-privilege service accounts.', 'Server'],
   ['Responsible data sourcing', 'We accept data only where the contributing business can document how it was collected.', 'Leaf'],
@@ -214,7 +214,7 @@ export function FAQ() {
 /* -------------------------------- FINAL CTA ------------------------------- */
 export function FinalCTA() {
   return (
-    <section className="relative overflow-hidden bg-midnight-950 py-28 sm:py-40">
+    <section id="contact" className="relative scroll-mt-20 overflow-hidden bg-midnight-950 py-28 sm:py-40">
       <ParticleField />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,.25),transparent_60%)]" />
       <div className="relative mx-auto max-w-4xl px-5 text-center">
@@ -227,10 +227,19 @@ export function FinalCTA() {
           <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-slate-300">Discover new revenue opportunities for your business while contributing to the development of artificial intelligence and market intelligence technologies.</p>
         </Reveal>
         <Reveal delay={0.2}>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Button onClick={() => go('onboarding')} icon="ArrowRight" className="px-8 py-4 text-base">Become a Data Partner</Button>
-            <Button variant="ghost" onClick={() => navigateToSection('calculator', true)} icon="Calculator" className="px-8 py-4 text-base">Calculate Your Earnings</Button>
+          <div className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-2">
+            <a href={`mailto:${company.email}`} className="group rounded-2xl border border-white/10 bg-white/[0.05] p-6 text-left backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-300/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-violet-500/20 text-violet-200"><Mail size={20} /></span>
+              <div className="mt-4 text-sm text-slate-400">Email us</div>
+              <div className="mt-1 font-display text-xl font-semibold text-white">{company.email}</div>
+            </a>
+            <a href={`tel:${company.phoneHref}`} className="group rounded-2xl border border-white/10 bg-white/[0.05] p-6 text-left backdrop-blur-xl transition hover:-translate-y-1 hover:border-emerald-300/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-emerald-500/20 text-emerald-200"><Phone size={20} /></span>
+              <div className="mt-4 text-sm text-slate-400">Call us</div>
+              <div className="mt-1 font-display text-xl font-semibold text-white">{company.phone}</div>
+            </a>
           </div>
+          <button onClick={() => navigateToSection('calculator', true)} className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-cyan-200 hover:text-white">Calculate your earnings first <ArrowRight size={15} /></button>
         </Reveal>
       </div>
     </section>
@@ -242,7 +251,7 @@ export function Footer({ route }) {
   const sec = (id) => navigateToSection(id, route);
   const cols = [
     ['Company', [['Data Partnerships', () => sec('calculator')], ['Industries', () => sec('industries')], ['FAQ', () => sec('faq')]]],
-    ['Partners', [['Become a Partner', () => go('onboarding')], ['Partner Login', () => go('login')], ['Demo Dashboard', () => go('dashboard')], ['Security & Privacy', () => sec('security')]]],
+    ['Partners', [['Contact Us', () => sec('contact')], ['Partner Login', () => go('login')], ['Demo Dashboard', () => go('dashboard')], ['Security & Privacy', () => sec('security')]]],
     ['Legal', [['Privacy Policy', () => go('privacy')], ['Terms of Service', () => go('terms')], ['Data Partnership Agreement', () => go('agreement')]]],
   ];
   return (
@@ -266,8 +275,8 @@ export function Footer({ route }) {
             <div className="text-slate-300">{company.legalEntity}</div>
             <div>{company.address}</div>
             <div>{company.jurisdiction}</div>
-            <div className="flex items-center gap-1.5"><Mail size={14} /> {company.email}</div>
-            <div>{company.phone}</div>
+            <a href={`mailto:${company.email}`} className="flex items-center gap-1.5 hover:text-white"><Mail size={14} /> {company.email}</a>
+            <a href={`tel:${company.phoneHref}`} className="flex items-center gap-1.5 hover:text-white"><Phone size={14} /> {company.phone}</a>
           </address>
         </div>
       </div>

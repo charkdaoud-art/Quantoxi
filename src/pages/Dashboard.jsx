@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutDashboard, UploadCloud, History, Wallet, ShieldCheck, Settings, LifeBuoy, LogOut, DollarSign, Clock, CheckCircle2, Database, ArrowUpRight, Search, X, Bell, ChevronRight } from 'lucide-react';
 import { Logo, Money, PrototypeNotice, go } from '../components/ui';
 import { company } from '../config/siteConfig';
+import { navigateToSection } from '../components/Nav';
 
 /* All figures below are synthetic sample data for the demo account. */
 const MONTHS = ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'];
@@ -154,7 +155,7 @@ export default function Dashboard() {
           </div>
           <div className="flex items-center gap-2">
             <button onClick={() => flash('No new notifications in demo mode.')} className="rounded-xl p-2.5 text-slate-300 ring-1 ring-white/10 hover:bg-white/5" aria-label="Notifications"><Bell size={17} /></button>
-            <button onClick={() => go('onboarding')} className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 px-4 py-2.5 text-sm font-semibold"><UploadCloud size={16} /> Upload new dataset</button>
+            <button onClick={() => navigateToSection('contact', true)} className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 px-4 py-2.5 text-sm font-semibold"><UploadCloud size={16} /> Submit new dataset</button>
           </div>
         </div>
         <div className="mt-4 flex gap-1 overflow-x-auto lg:hidden">
@@ -259,7 +260,7 @@ export default function Dashboard() {
 
             {tab === 'support' && (
               <div className="grid gap-4 md:grid-cols-3">
-                {[['Export help', 'Step-by-step CSV export guides for common CRMs.', () => { go(''); setTimeout(() => document.getElementById('crm')?.scrollIntoView({ behavior: 'smooth' }), 80); }], ['Data Partnership Agreement', 'Review the terms that govern your submissions.', () => go('agreement')], ['Contact support', `Email ${company.email}`, () => flash(`Support: ${company.email}`)]].map(([t, d, fn]) => (
+                {[['Export help', 'Step-by-step CSV export guides for common CRMs.', () => { go(''); setTimeout(() => document.getElementById('crm')?.scrollIntoView({ behavior: 'smooth' }), 80); }], ['Data Partnership Agreement', 'Review the terms that govern your submissions.', () => go('agreement')], ['Contact support', `${company.email} · ${company.phone}`, () => flash(`Support: ${company.email} · ${company.phone}`)]].map(([t, d, fn]) => (
                   <Card key={t}><div className="font-semibold">{t}</div><p className="mt-1 text-sm text-slate-400">{d}</p><button onClick={fn} className="mt-4 inline-flex items-center gap-1 text-sm text-cyan-300">Open <ArrowUpRight size={14} /></button></Card>
                 ))}
               </div>
