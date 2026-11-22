@@ -1,6 +1,6 @@
 # Quantoxi
 
-Marketing site and partner portal prototype for Quantoxi, a North American AI and data analytics company with a compensated data partnership program.
+Marketing site and partner portal prototype for Quantoxi, a Canadian AI and data analytics company based in Toronto, with a compensated data partnership program.
 
 Built with React 18, Vite, Tailwind CSS, Framer Motion and Lucide icons.
 

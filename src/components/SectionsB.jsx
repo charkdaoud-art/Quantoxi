@@ -160,7 +160,7 @@ export function Security() {
 
 /* ----------------------------------- FAQ ---------------------------------- */
 const FAQS = [
-  ['What is Quantoxi?', 'Quantoxi is a North American artificial intelligence and data analytics company. We build predictive and market intelligence models using responsibly sourced data, and we compensate businesses that contribute eligible, authorized datasets.'],
+  ['What is Quantoxi?', 'Quantoxi is a Canadian artificial intelligence and data analytics company based in Toronto, Ontario. We build predictive and market intelligence models using responsibly sourced data, and we compensate businesses that contribute eligible, authorized datasets.'],
   ['Why does Quantoxi acquire data?', 'High-quality, real-world business data is essential for training and testing models that forecast demand, benchmark industries and understand aggregated consumer behaviour.'],
   ['What types of businesses can participate?', 'Businesses in Canada and the United States across home services, real estate, automotive, e-commerce, retail, hospitality, professional services and more. Each dataset is assessed individually.'],
   ['How much can my business earn?', 'We pay a standard 8¢ per eligible record. Each record includes the customer’s name, email, phone number and address. Use the calculator for an estimate; final compensation is confirmed after verification.'],
@@ -258,7 +258,7 @@ export function Footer({ route }) {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1.2fr_1.3fr]">
         <div>
           <div className="text-white"><Logo /></div>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed">{company.slogan} A North American AI and data analytics company building predictive intelligence on responsibly sourced data.</p>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed">{company.slogan} A Canadian AI and data analytics company, based in Toronto, building predictive intelligence on responsibly sourced data.</p>
         </div>
         {cols.map(([h, items]) => (
           <div key={h}>
