@@ -49,7 +49,7 @@ export const recordRange = { min: 100, max: 250000 };
 
 export const timelines = {
   verification: '10 to 20 business days after submission',
-  payment: 'Within 30 days after a dataset is approved',
+  payment: 'Within 48 hours after a dataset is approved',
 };
 
 export const industries = [

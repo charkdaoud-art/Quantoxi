@@ -168,7 +168,7 @@ const FAQS = [
   ['Can I export data from Jobber?', 'Yes. Jobber, like most business software, can export client lists to CSV. See the export instructions in the CRM section. We have no official partnership with Jobber.'],
   ['What if I have thousands of records?', 'That is common. The calculator covers up to 250,000 records, and larger datasets are reviewed individually.'],
   ['How does verification work?', 'We check file formatting, required columns, authorization documentation, duplicates and overall quality. You can see each submission’s status in your partner dashboard.'],
-  ['How do I receive payment?', 'Approved partners choose bank transfer, PayPal or electronic funds transfer. Payment follows approval, typically within 30 days, and is never guaranteed before verification.'],
+  ['How do I receive payment?', 'Approved partners choose bank transfer, PayPal or electronic funds transfer. Payment is sent within 48 hours of dataset approval.'],
   ['Can I submit data every month?', 'Yes, you can submit new records as your business grows. Records already submitted are detected as duplicates and are not paid twice.'],
   ['How will the submitted information be used?', 'Only for the purposes described in the Data Partnership Agreement, such as model training, research and aggregated market intelligence. The agreement is shown to you before any submission.'],
   ['What customer permissions are required?', 'You must be able to show that your customers consented, or that you otherwise have lawful authority, to disclose their personal information to a third party for these purposes. Canadian law generally requires meaningful consent for this.'],
