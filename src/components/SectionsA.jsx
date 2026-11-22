@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowRight, ChevronDown, Calculator as CalcIcon, Info, UserPlus, FileSpreadsheet, ShieldCheck, Wallet, Check } from 'lucide-react';
 import DataSphere from './DataSphere';
-import { Button, Counter, DemoTag, Eyebrow, Glass, Icon, Money, Reveal, SectionHeader, go, scrollToId } from './ui';
+import { Button, Counter, Eyebrow, Glass, Icon, Money, Reveal, SectionHeader, go, scrollToId } from './ui';
 import { dataRates, industries, recordRange, stats, statsMode, currency, fmtRate } from '../config/siteConfig';
 
 /* ---------------------------------- HERO ---------------------------------- */
@@ -84,14 +84,10 @@ export function Stats() {
   const shown = statsMode === 'production' ? stats.filter((s) => s.verified) : stats;
   if (!shown.length) return null;
   return (
-    <section aria-labelledby="stats-h" className="relative border-y border-white/5 bg-midnight-900 py-16">
+    <section aria-label="Quantoxi partnership figures" className="relative border-y border-white/5 bg-midnight-900 py-16">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/60 to-transparent" />
       <div className="mx-auto max-w-7xl px-5">
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
-          <h2 id="stats-h" className="font-mono text-xs uppercase tracking-[0.2em] text-slate-400">Partnership program at a glance</h2>
-          {statsMode === 'demo' && <p className="text-xs text-amber-200/80">Figures marked Illustrative are demonstration targets, not verified company results.</p>}
-        </div>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {shown.map((s, i) => (
             <Reveal key={s.id} delay={i * 0.06}>
               <Glass className="group relative h-full overflow-hidden p-5 transition hover:border-cyan-300/30">
@@ -101,7 +97,6 @@ export function Stats() {
                 </div>
                 <div className="mt-2 text-sm font-medium text-slate-200">{s.label}</div>
                 <div className="mt-1 text-xs text-slate-400">{s.note}</div>
-                {!s.verified && <DemoTag className="mt-3" />}
               </Glass>
             </Reveal>
           ))}

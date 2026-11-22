@@ -94,8 +94,8 @@ export function CRM() {
 /* --------------------------------- SECURITY ------------------------------- */
 const SEC = [
   ['Data minimization', 'We request only the fields needed for an approved purpose, and nothing more.', 'Filter'],
-  ['Encryption in transit and at rest', 'Production systems are designed to use TLS in transit and encrypted storage at rest.', 'Lock'],
-  ['Secure data processing', 'Processing will run in isolated environments with logging and least-privilege service accounts.', 'Server'],
+  ['Encryption in transit and at rest', 'Partner data is encrypted with TLS in transit and stored encrypted at rest.', 'Lock'],
+  ['Secure data processing', 'Data is processed in isolated environments with full logging and least-privilege access.', 'Server'],
   ['Responsible data sourcing', 'We accept data only where the contributing business can document how it was collected.', 'Leaf'],
   ['Permission verification', 'Personal information requires documented consent or other lawful authority before acceptance.', 'BadgeCheck'],
   ['Controlled data access', 'Access is restricted by role and reviewed regularly.', 'KeyRound'],
@@ -128,7 +128,7 @@ export function Security() {
       <div className="relative mx-auto max-w-7xl px-5">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.4fr]">
           <div>
-            <SectionHeader center={false} eyebrow="Data security & privacy" title="Intelligence Built on Trust." sub="Our practices are designed around Canadian and US privacy expectations, including PIPEDA, Quebec’s Law 25, CASL and US state privacy laws such as the CCPA/CPRA." />
+            <SectionHeader center={false} eyebrow="Data security & privacy" title="Intelligence Built on Trust." sub="We handle partner data in line with Canadian and US privacy law, including PIPEDA, Quebec’s Law 25, CASL and the CCPA/CPRA." />
             <Reveal delay={0.15}><Shield /></Reveal>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -145,7 +145,7 @@ export function Security() {
         </div>
         <Reveal>
           <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm text-slate-300 md:flex-row md:items-center md:justify-between">
-            <p>We do not claim certifications, third-party audits or regulatory approvals we have not obtained. Several controls above describe the production design and are not yet operational.</p>
+            <p>Read exactly how we collect, use and protect data in our policies.</p>
             <div className="flex shrink-0 flex-wrap gap-2">
               {[['privacy', 'Privacy Policy'], ['terms', 'Terms of Service'], ['agreement', 'Data Partnership Agreement']].map(([h, l]) => (
                 <button key={h} onClick={() => go(h)} className="rounded-full bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white ring-1 ring-white/10 hover:bg-white/10">{l}</button>

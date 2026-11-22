@@ -29,11 +29,10 @@ export const company = {
 export const statsMode = 'demo'; // 'demo' | 'production'
 
 export const stats = [
-  { id: 'payouts', label: 'Total Partner Payouts', value: 8000000, prefix: '$', suffix: '+', note: 'Projected partner payouts', verified: false },
+  { id: 'payouts', label: 'Total Partner Payouts', value: 2200000, prefix: '$', suffix: '+', note: 'Projected partner payouts', verified: false, compact: true },
   { id: 'partners', label: 'Participating Businesses', value: 3200, suffix: '+', note: 'Projected business partners', verified: false },
-  { id: 'records', label: 'Data Records Processed', value: 100000000, suffix: '+', note: 'Target data records', verified: false, compact: true },
-  { id: 'industries', label: 'Industries Supported', value: 16, note: 'Industry categories accepted today', verified: true },
-  { id: 'avg', label: 'Average Partner Payout', value: 2500, prefix: '$', note: 'Illustrative average payout', verified: false },
+  { id: 'industries', label: 'Industries Supported', value: 16, note: 'Industry categories we accept', verified: true },
+  { id: 'avg', label: 'Average Partner Payout', value: 1200, prefix: '$', note: 'Projected average payout', verified: false },
 ];
 
 /** Data acquisition rates in CAD per eligible record. Configurable. */
