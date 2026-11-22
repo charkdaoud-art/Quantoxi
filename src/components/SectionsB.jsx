@@ -93,15 +93,15 @@ export function CRM() {
 
 /* --------------------------------- SECURITY ------------------------------- */
 const SEC = [
-  ['Data minimization', 'We request only the fields needed for an approved purpose, and nothing more.', 'Filter'],
-  ['Encryption in transit and at rest', 'Partner data is encrypted with TLS in transit and stored encrypted at rest.', 'Lock'],
-  ['Secure data processing', 'Data is processed in isolated environments with full logging and least-privilege access.', 'Server'],
-  ['Responsible data sourcing', 'We accept data only where the contributing business can document how it was collected.', 'Leaf'],
-  ['Permission verification', 'Personal information requires documented consent or other lawful authority before acceptance.', 'BadgeCheck'],
-  ['Controlled data access', 'Access is restricted by role and reviewed regularly.', 'KeyRound'],
-  ['Data retention and deletion', 'Data is kept only as long as needed for the stated purpose, then deleted or de-identified.', 'Trash2'],
-  ['Privacy request procedures', 'Individuals can request access, correction or deletion through our Privacy Officer.', 'Inbox'],
-  ['Transparent processing purposes', 'Every use of contributed data is disclosed in the Data Partnership Agreement before you submit.', 'Eye'],
+  ['Data minimization', 'We ask only for the fields needed for an approved purpose.', 'Filter'],
+  ['Encryption', 'We commit to protecting partner data with encryption, both in transit and in storage.', 'Lock'],
+  ['Careful data handling', 'We aim to handle data in controlled environments and keep access to a minimum.', 'Server'],
+  ['Responsible data sourcing', 'We look for data that the contributing business can show was collected properly.', 'Leaf'],
+  ['Permission first', 'We ask for documented consent or other lawful authority before accepting personal information.', 'BadgeCheck'],
+  ['Limited access', 'We limit who can access partner data to the people who need it.', 'KeyRound'],
+  ['Retention and deletion', 'We keep data only as long as needed for its stated purpose, then delete or de-identify it.', 'Trash2'],
+  ['Privacy requests', 'Individuals can contact us to request access, correction or deletion of their information.', 'Inbox'],
+  ['Clear purposes', 'We explain how contributed data will be used in the Data Partnership Agreement before you share anything.', 'Eye'],
 ];
 
 function Shield() {
@@ -128,7 +128,7 @@ export function Security() {
       <div className="relative mx-auto max-w-7xl px-5">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.4fr]">
           <div>
-            <SectionHeader center={false} eyebrow="Data security & privacy" title="Intelligence Built on Trust." sub="We handle partner data in line with Canadian and US privacy law, including PIPEDA, Quebec’s Law 25, CASL and the CCPA/CPRA." />
+            <SectionHeader center={false} eyebrow="Data security & privacy" title="Intelligence Built on Trust." sub="Our commitments to every partner, guided by Canadian and US privacy law, including PIPEDA, Quebec’s Law 25, CASL and the CCPA/CPRA." />
             <Reveal delay={0.15}><Shield /></Reveal>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
